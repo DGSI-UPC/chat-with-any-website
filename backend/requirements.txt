@@ -1,0 +1,18 @@
+fastapi
+uvicorn[standard]
+pydantic-settings
+sqlalchemy
+requests
+beautifulsoup4
+httpx  # For async requests
+chromadb
+sentence-transformers # For embeddings (replace if using OpenAI embeddings)
+openai # For GPT interaction
+langchain # For text splitting (can also use basic splitting)
+pypdfium2 # Good alternative for PDF text extraction
+pytesseract # For OCR
+pdf2image   # Needed by pytesseract for PDFs
+ Pillow # Image processing dependency
+python-dotenv
+
+# Add other specific dependencies as needed

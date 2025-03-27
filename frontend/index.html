@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Knowledge & Chat Interface</h1>
+    </header>
+
+    <main class="container">
+        <section id="knowledge-section">
+            <h2>Add Knowledge</h2>
+            <div class="input-group">
+                <input type="url" id="url-input" placeholder="Enter website URL (e.g., https://example.com)" required>
+                <button id="add-knowledge-btn">Add Source</button>
+            </div>
+            <div id="knowledge-status"></div>
+        </section>
+
+        <section id="chat-section">
+            <h2>Chat</h2>
+            <div id="chat-history">
+                <div class="message system"><span>Welcome! Add knowledge sources or ask a question.</span></div>
+            </div>
+            <div class="input-group">
+                <input type="text" id="chat-input" placeholder="Ask a question..." autocomplete="off">
+                <button id="send-chat-btn">Send</button>
+            </div>
+             <div id="chat-status"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Simple FastAPI & Vanilla JS App</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

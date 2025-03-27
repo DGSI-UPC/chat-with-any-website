@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend # Path to the directory containing the Dockerfile
+    container_name: knowledge-chat-backend
+    env_file:
+      - ./backend/.env # Load environment variables from .env file
+    environment:
+      # Override or set additional environment variables here if needed
+      # Example: LOG_LEVEL=DEBUG
+      # Ensure OPENAI_API_KEY is present either in .env or here if not baked into image
+      - OPENAI_API_KEY=${OPENAI_API_KEY} # Pass key from host environment or root .env if defined
+    ports:
+      - "8000:8000" # Map host port 8000 to container port 8000
+    volumes:
+      # Mount the persistent data directory
+      - ./backend/app/data:/app/app/data
+      - ./frontend:/frontend
+      # For development: Mount code for live reload (requires --reload in CMD)
+      # Comment out or remove this volume for production builds
+      # - ./backend/app:/app/app
+    # healthcheck: # Optional: Add a basic health check
+    #   test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
+    restart: unless-stopped # Restart policy
+
+volumes:
+  # Define the persistent volume (though we're using a bind mount above)
+  # You could switch to a named volume like this:
+  # app_data:
+  # Then in services.backend.volumes:
+  # - app_data:/app/app/data
+  # This is generally preferred over bind mounts for data persistence in Docker
+  app_data: # Name matches the volume reference if using named volumes
+
+# Note: Frontend is served by FastAPI's StaticFiles, so no separate frontend service needed here.
