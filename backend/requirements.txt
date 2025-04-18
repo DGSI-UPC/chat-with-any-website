@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+chromadb
+beautifulsoup4
+requests
+PyMuPDF
+pytesseract
+openai
+sentence-transformers
+pydantic-settings
+aiohttp
+lxml
+tiktoken

@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  web_rag_app:
+    build: .
+    container_name: web_rag_container
+    ports:
+      - "8000:8000" # Map host port 8000 to container port 8000
+    volumes:
+      # Mount the backend/data directory to persist ChromaDB data
+      - ./backend/data:/app/backend/data
+    environment:
+      # Pass OpenAI API Key from .env file in the same directory as docker-compose.yml
+      # Make sure you have a .env file with OPENAI_API_KEY="your_key"
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      # You can add other environment variables here if needed by config.py
+    # Add healthcheck if desired (optional)
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
+    #   start_period: 15s # Give time for the app to start
+    restart: unless-stopped # Optional: restart policy
+
+# Note: Ensure a .env file exists in the same directory as this docker-compose.yml
+# containing:
+# OPENAI_API_KEY=your_actual_openai_api_key_here

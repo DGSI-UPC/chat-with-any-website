@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web RAG Chat</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Chat with Website Content</h1>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <h2>Scrape & Manage</h2>
+                <div class="scrape-section">
+                    <h3>Scrape New Website</h3>
+                    <input type="url" id="url-input" placeholder="Enter website URL (e.g., https://example.com)">
+                    <button id="scrape-button">Start Scraping</button>
+                    <div id="scrape-status"></div>
+                </div>
+
+                <div class="sources-section">
+                    <h3>Available Sources</h3>
+                    <div id="sources-list">Loading sources...</div>
+                     <p><small>Select sources below for the current chat.</small></p>
+                </div>
+
+                <div class="chats-section">
+                    <h3>Chats</h3>
+                    <button id="new-chat-button">New Chat</button>
+                    <ul id="chat-list"></ul>
+                </div>
+            </aside>
+
+            <main class="chat-area">
+                <div class="chat-header">
+                    <h2 id="current-chat-title">New Chat</h2>
+                    <div class="chat-sources">
+                        <span>Using sources: </span>
+                        <span id="current-chat-sources">None selected</span>
+                        <button id="delete-chat-button" class="delete-button" style="display: none;">Delete Chat</button>
+                    </div>
+                </div>
+
+                <div id="chat-window">
+                    </div>
+
+                <div class="chat-input">
+                    <textarea id="message-input" placeholder="Ask a question about the selected website(s)..." rows="3"></textarea>
+                    <button id="send-button">Send</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
